@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016-2023 crDroid Android Project
+ * Copyright (C) 2023 Swift Android Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,23 +41,12 @@ public class About extends SettingsPreferenceFragment {
 
     private String KEY_CRDROID_DONATE = "crdroid_donate";
     private String KEY_CRDROID_SOURCE = "crdroid_source";
-    private String KEY_CRDROID_TELEGRAM = "crdroid_telegram";
     private String KEY_CRDROID_SHARE = "crdroid_share";
-    private String KEY_CRDROID_TRANSLATE = "crdroid_translate";
     private String KEY_CRDROID_WEBSITE = "crdroid_website";
-    private String KEY_CRDROID_TELEGRAM_CHANNEL = "crdroid_telegram_channel";
-    private String KEY_CRDROID_SPONSOR = "crdroid_sponsor";
-    private String KEY_CRDROID_BUILDSERVERSPONSOR = "crdroid_buildserversponsor";
 
     private Preference mDonate;
     private Preference mSourceUrl;
-    private Preference mTelegramUrl;
     private Preference mShare;
-    private Preference mTranslate;
-    private Preference mWebsite;
-    private Preference mTelegramChannelUrl;
-    private Preference mSponsor;
-    private Preference mBuildServerSponsor;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,23 +55,15 @@ public class About extends SettingsPreferenceFragment {
 
         mDonate = findPreference(KEY_CRDROID_DONATE);
         mSourceUrl = findPreference(KEY_CRDROID_SOURCE);
-        mTelegramUrl = findPreference(KEY_CRDROID_TELEGRAM);
         mShare = findPreference(KEY_CRDROID_SHARE);
-        mTranslate = findPreference(KEY_CRDROID_TRANSLATE);
-        mWebsite = findPreference(KEY_CRDROID_WEBSITE);
-        mTelegramChannelUrl = findPreference(KEY_CRDROID_TELEGRAM_CHANNEL);
-        mSponsor = findPreference(KEY_CRDROID_SPONSOR);
-        mBuildServerSponsor = findPreference(KEY_CRDROID_BUILDSERVERSPONSOR);
     }
 
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
         if (preference == mDonate) {
-            launchUrl("https://crdroid.net/donate.php");
+            launchUrl("https://www.buymeacoffee.com/iamtttt55");
         } else if (preference == mSourceUrl) {
-            launchUrl("https://github.com/crdroidandroid");
-        } else if (preference == mTelegramUrl) {
-            launchUrl("https://t.me/crDroidAndroid");
+            launchUrl("https://github.com/swiftos");
         } else if (preference == mShare) {
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_SEND);
@@ -90,16 +71,6 @@ public class About extends SettingsPreferenceFragment {
             intent.putExtra(Intent.EXTRA_TEXT, String.format(
                     getActivity().getString(R.string.share_message), Build.MODEL));
             startActivity(Intent.createChooser(intent, getActivity().getString(R.string.share_chooser_title)));
-        } else if (preference == mTranslate) {
-            launchUrl("https://crdroid.net/translations.php");
-        } else if (preference == mWebsite) {
-            launchUrl("https://crdroid.net");
-        } else if (preference == mTelegramChannelUrl) {
-            launchUrl("https://t.me/crDroidUpdates");
-        } else if (preference == mSponsor) {
-            launchUrl("https://www.scopehosts.com");
-        } else if (preference == mBuildServerSponsor){
-            launchUrl("https://www.interserver.net/r/836686");
         }
 
         return super.onPreferenceTreeClick(preference);
